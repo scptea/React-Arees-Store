@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Hire a Live Chat Assistant</title>
+  <meta name="description" content="Live chat assistant form">
+  <meta name="author" content="faisal alassaf">
+  <link rel="stylesheet" href="styles.css"> <!--style-->
+
+</head>
+
+<body align="center">
+  <!-- Heading -->
+  <h1>Live chat assistant form</h1>
+  
+  <!-- Form -->
+  <form action="confirmation.html" method="POST">
+    <!-- Name input field -->
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required autocomplete="off"><br><br>
+    
+    <!-- Email input field -->
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required autocomplete="email"><br><br>
+    
+    <!-- Experience input field -->
+    <label for="experience">Years of Experience:</label><br>
+    <input type="number" id="experience" name="experience" required><br><br>
+    
+    <!-- Availability input field -->
+    <label for="availability">Availability:</label><br>
+    <input type="text" id="availability" name="availability" placeholder="e.g., 20 hours per week" required><br><br>
+    
+    <!-- Skills textarea -->
+    <label for="skills">Skills:</label><br>
+    <textarea id="skills" name="skills" rows="5" required></textarea><br><br>
+    
+    <!-- Resume/CV file upload -->
+    <label for="resume">Resume/CV:</label><br>
+    <input type="file" id="resume" name="resume" required><br><br>
+    
+    <!-- Terms and conditions checkbox -->
+    <input type="checkbox" id="terms" name="terms" required>
+    <label for="terms">I agree to the terms and conditions</label><br><br>
+    
+    <!-- Submit button -->
+    <a href="confirmation.html"><button>Submit</button></a>
+  </form>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Arees. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
