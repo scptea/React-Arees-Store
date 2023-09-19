@@ -1,0 +1,181 @@
+a {
+  color: rgba(235, 233, 229, 0.977)
+}
+
+/* Change all header cells of the table to uppercase */
+table th {
+  text-transform: uppercase;
+}
+
+/* Apply the "top" class to top values cells in the table */
+td.top {
+  background-color: #f3b10a;
+}
+
+/* Change the background of <em> elements to blue */
+em {
+  background-color: blue;
+}
+
+/* Give the element with id "the_most_important" all caps and a gold background */
+#the_most_important {
+  text-transform: uppercase;
+  background-color: gold;
+}
+
+/* Change all h1 font family to Century */
+
+h1 {
+  color: #382719;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Change all h2 font family to Garamond */
+h2 {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #382719;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Change all h3 font family to Garamond */
+h3 {
+  color: gray;
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+h4 {
+  color: #705E49;
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+h5 {
+  color: #382719;
+
+  font-family: 'Roboto Condensed';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+/* Capitalize all headings of any level */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+}
+
+/* Change the first paragraph's letter after any h2 to x-large */
+h2+p:first-letter {
+  font-size: x-large;
+}
+
+/* Change the background color of table rows on hover */
+table tr:hover {
+  background-color: lightcyan;
+}
+
+/* Change the background color of cells on hover */
+table tr:hover td {
+  background-color: lightblue;
+}
+
+/*  navigation bar */
+nav {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.button {
+  /* Other button styles... */
+
+  /* Set initial background color */
+  background-color: #333;
+
+  /* Add transition for background color */
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  /* Change background color on hover */
+  background-color: #705E49;
+}
+
+/* Change the display of navbar list items to inline */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  display: inline;
+
+}
+
+/* Change the link style of the first nav item */
+nav li:first-child a {
+  text-decoration: underline;
+}
+
+/* Use nth-child to alternate background colors of table body rows */
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Change the highlighting color of selected text */
+::selection {
+  background-color: 760CE
+}
+
+/* Change cursor to pointer on webpage body links */
+body a {
+  cursor: pointer;
+}
+
+/* Change input fields height to 20px */
+input {
+  height: 20px;
+}
+
+/* Change the border color of text inputs to light gray */
+input[type="text"] {
+  border-color: lightgray;
+}
+
+/* Change input of name message height to 50px */
+input[name="message"] {
+  height: 50px;
+}
+
+/* border */
+
+.fancy-border {
+  border: 5px solid #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
