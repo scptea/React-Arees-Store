@@ -8,7 +8,7 @@
         content="متجر أريس لبيع معدات القهوة - مكانك الواحد للحصول على آلات القهوة وملحقاتها بجودة عالية وأسعار معقولة.">
     <meta name="keywords" content="قهوة فاخرة, آلات القهوة, حبوب القهوة, ملحقات القهوة, متجر على الإنترنت">
     <meta name="author" content="فيصل العساف"><!--author-->
-    <link rel="stylesheet" href="styles-ar.css"> <!--style-->
+    <link rel="stylesheet" href="styles.css"> <!--style-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -17,17 +17,26 @@
 </head>
 
 <body align="center">
+    <div id="loading-overlay">
+        <div id="loading-spinner"></div>
+        <div id="loading-text">انتظر من فضلك...</div>
+    </div>
     <header>
         <h1>متجر أريس</h1>
         <!-- Navigation links -->
         <nav>
-
-            <li><a href="#about">حول</a></li>
-            <li><a href="#coffee-machine-details">تفاصيل آلة القهوة</a></li>
-            <li><a href="#features-and-benefits">الميزات والفوائد</a></li>
-            <li><a href="#contact-us">اتصل بنا</a></li>
-            <li> <a href="index.html">English</a></li>
-
+            <div class="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="menu">
+                <li><a href="#about">حول</a></li>
+                <li><a href="#coffee-machine-details">تفاصيل آلة القهوة</a></li>
+                <li><a href="#features-and-benefits">الميزات والفوائد</a></li>
+                <li><a href="#contact-us">اتصل بنا</a></li>
+                <li> <a href="index.html">English</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -145,16 +154,6 @@
     </section>
 
     <footer>
-        <!-- Navigation links -->
-        <nav>
-
-            <li><a href="#about">حول</a></li>
-            <li><a href="#coffee-machine-details">تفاصيل آلة القهوة</a></li>
-            <li><a href="#features-and-benefits">الميزات والفوائد</a></li>
-            <li><a href="#contact-us">اتصل بنا</a></li>
-            <li> <a href="index.html">English</a></li>
-
-        </nav>
         </header>
         <!-- Additional contact information -->
         <p>متجر أريس &copy; 2023. جميع الحقوق محفوظة.</p>
