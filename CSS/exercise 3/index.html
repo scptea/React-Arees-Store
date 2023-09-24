@@ -15,22 +15,32 @@
 
 
 <body align="center">
+
+  <div id="loading-overlay">
+    <div id="loading-spinner"></div>
+    <div id="loading-text">Please wait...</div>
+  </div>
+  
   <header>
     <h1>Arees store</h1>
     <!-- Navigation links -->
     <nav>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Coffee Machine Details</a></li>
-        <li><a href="#">Features and Benefits</a></li>
-        <li><a href="#">Contact Us</a></li>
+      <div class="hamburger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="menu">
+        <li><a href="#About">About</a></li>
+        <li><a href="#Coffee Machine Details">Coffee Machine Details</a></li>
+        <li><a href="#Features and Benefits">Features and Benefits</a></li>
+        <li><a href="#Contact Us">Contact Us</a></li>
         <li><a href="index-ar.html">العربية</a></li>
       </ul>
     </nav>
-
   </header>
 
-  <section id="about">
+  <section id="About">
     <h2>About</h2>
     <!-- Description of store -->
     <h3>
@@ -143,18 +153,6 @@
   </section>
 
   <footer>
-    <!-- Navigation links -->
-    <nav>
-      <input type="checkbox" id="navbar-toggle" class="navbar-toggle-footer">
-      <label for="navbar-toggle-footer" class="navbar-icon"></label>
-      <ul class="navbar-menu">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Coffee Machine Details</a></li>
-        <li><a href="#">Features and Benefits</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="index-ar.html">العربية</a></li>
-      </ul>
-    </nav>
     <h5>
       <p>Contact us: info@areesstore.com | 966547278334</p>
       <p>&copy; 2023 Arees. All rights reserved.</p>
