@@ -1,3 +1,6 @@
+@import url('styles-ar.css');
+@import url('styles-en.css');
+
 a {
   color: rgba(235, 233, 229, 0.977)
 }
@@ -27,7 +30,6 @@ em {
 
 h1 {
   color: #382719;
-  font-family: 'Roboto Condensed', sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
@@ -41,13 +43,11 @@ h2 {
   font-weight: 400;
   line-height: normal;
   color: #382719;
-  font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* Change all h3 font family to Garamond */
 h3 {
   color: gray;
-  font-family: 'Roboto Condensed';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -56,7 +56,6 @@ h3 {
 
 h4 {
   color: #705E49;
-  font-family: 'Roboto Condensed';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -66,7 +65,6 @@ h4 {
 h5 {
   color: #382719;
 
-  font-family: 'Roboto Condensed';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -101,23 +99,167 @@ table tr:hover td {
 
 /*  navigation bar */
 nav {
+  position: relative;
+  cursor: pointer;
+  position: fixed;
+  color: #333;
+}
+
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+
+}
+
+.hamburger-menu {
+
+  width: 40px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hamburger-menu div {
+  width: 100%;
+  height: 2px;
   background-color: #333;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-menu div:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-menu div:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-menu div:nth-child(3) {
+  bottom: 0;
+}
+
+.menu {
+  display: none;
+  position: relative;
+  width: auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  text-align: center;
-  font-family: 'Roboto Condensed';
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.menu li {
+
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+}
+
+
+nav:hover .menu {
+  display: block;
+  background-color: #333;
+}
+
+.menu a:hover {
+  color: #705e49b0;
+}
+
+nav:hover .menu li {
+  opacity: 1;
+}
+
+nav:hover .menu li:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+nav:hover .menu li:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+nav:hover .menu li:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+nav:hover .menu li:nth-child(4) {
+  transition-delay: 0.8s;
+}
+
+nav:hover .menu li:nth-child(5) {
+  transition-delay: 1s;
+}
+
+
+.hamburger-menu:hover {
+
+  background-color: #f2f2f2;
+}
+
+/* Loading overlay styles */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  z-index: 9999;
+  animation: buffering 2s ease-in-out forwards;
+}
+
+#loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loading-text {
+  margin-top: 16px;
+  font-size: 18px;
+}
+@keyframes buffering {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .button {
-  /* Other button styles... */
 
-  /* Set initial background color */
   background-color: #333;
 
-  /* Add transition for background color */
   transition: background-color 0.3s ease;
 }
 
@@ -126,20 +268,6 @@ nav {
   background-color: #705E49;
 }
 
-/* Change the display of navbar list items to inline */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  font-size: 25px;
-  display: inline;
-
-}
-
-/* Change the link style of the first nav item */
-nav li:first-child a {
-  text-decoration: underline;
-}
 
 /* Use nth-child to alternate background colors of table body rows */
 table tbody tr:nth-child(even) {
