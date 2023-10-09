@@ -20,7 +20,7 @@
     <div id="loading-spinner"></div>
     <div id="loading-text">Please wait...</div>
   </div>
-  
+
   <header>
     <h1>Arees store</h1>
     <!-- Navigation links -->
@@ -56,49 +56,71 @@
     <!-- coffee machine details -->
     <h2>Coffee Machine Details</h2>
     <h5>
-      <table align="center" class="fancy-border">
+      <table align="center" id="coffeeTable" class="fancy-border">
         <tr>
           <th>Brewing Method</th>
           <th>Equipment Needed</th>
           <th>Brewing Time</th>
           <th>Flavor Profile</th>
         </tr>
-        <tr>
-          <td>Aeropress</td>
-          <td>Aeropress, filter paper, water, coffee</td>
-          <td>1-2 minutes</td>
-          <td>Smooth, clean, and rich</td>
-        </tr>
-        <tr>
-          <td>French Press</td>
-          <td>French press, coarsely ground coffee, water</td>
-          <td>4-5 minutes</td>
-          <td>Full-bodied, bold, and rich</td>
-        </tr>
-        <tr>
-          <td>Pour Over</td>
-          <td>Pour over dripper, paper filter, water, coffee</td>
-          <td>2-4 minutes</td>
-          <td>Clean, bright, and nuanced</td>
-        </tr>
-        <tr>
-          <td>Espresso</td>
-          <td>Espresso machine, finely ground coffee, water</td>
-          <td>20-30 seconds</td>
-          <td>Intense, concentrated, and flavorful</td>
-        </tr>
-        
       </table>
-    </h5>
-    <!-- Images of coffee machines -->
-    <table align="center" class="fancy-border">
       <tr>
-        <th><img src="aeropress.png" alt="an aeropress machine image" height="250" width="200"></th>
-        <th><img src="frenchpress.png" alt="a frenchpress machine image" height="250" width="200"></th>
-        <th><img src="pourover.png" alt="a pourover machine image" height="250" width="200"></th>
-        <th><img src="espresso.png" alt="an espresso machine image" height="250" width="200"></th>
-      </tr>
-    </table>
+  </section>
+  <script>
+    // Data for the coffee machine details
+    const coffeeData = [
+      {
+        brewingMethod: 'Aeropress',
+        equipmentNeeded: 'Aeropress, filter paper, water, coffee',
+        brewingTime: '1-2 minutes',
+        flavorProfile: 'Smooth, clean, and rich'
+      },
+      {
+        brewingMethod: 'French Press',
+        equipmentNeeded: 'French press, coarsely ground coffee, water',
+        brewingTime: '4-5 minutes',
+        flavorProfile: 'Full-bodied, bold, and rich'
+      },
+      {
+        brewingMethod: 'Pour Over',
+        equipmentNeeded: 'Pour over dripper, paper filter, water, coffee',
+        brewingTime: '2-4 minutes',
+        flavorProfile: 'Clean, bright, and nuanced'
+      },
+      {
+        brewingMethod: 'Espresso',
+        equipmentNeeded: 'Espresso machine, finely ground coffee, water',
+        brewingTime: '20-30 seconds',
+        flavorProfile: 'Intense, concentrated, and flavorful'
+      },
+    ];
+
+    // Get the table element
+    const coffeeTable = document.getElementById('coffeeTable');
+
+    // Loop through the coffeeData list and create table rows dynamically
+    coffeeData.forEach(coffee => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${coffee.brewingMethod}</td>
+        <td>${coffee.equipmentNeeded}</td>
+        <td>${coffee.brewingTime}</td>
+        <td>${coffee.flavorProfile}</td>
+      `;
+      coffeeTable.appendChild(row);
+    });
+  </script>
+
+  </h5>
+  <!-- Images of coffee machines -->
+  <table align="center" class="fancy-border">
+    <tr>
+      <th><img src="aeropress.png" alt="an aeropress machine image" height="250" width="200"></th>
+      <th><img src="frenchpress.png" alt="a frenchpress machine image" height="250" width="200"></th>
+      <th><img src="pourover.png" alt="a pourover machine image" height="250" width="200"></th>
+      <th><img src="espresso.png" alt="an espresso machine image" height="250" width="200"></th>
+    </tr>
+  </table>
   </section>
 
   <section id="Features and Benefits">
