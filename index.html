@@ -159,7 +159,40 @@
       </table>
     </h5>
   </section>
+  <section id="CustomerTestimonials">
+    <h2>Customer Testimonials</h2>
+    <ul id="testimonialsList"></ul>
+  </section>
 
+  <script>
+    // Fetch random user profiles from the Random User API
+    const apiUrl = 'https://randomuser.me/api/?results=2';
+  
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const testimonialsList = document.getElementById('testimonialsList');
+  
+        // Iterate over the retrieved user profiles and create HTML elements for each testimonial
+        data.results.forEach(user => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `
+            <div>
+              <img src="${user.picture.medium}" alt="${user.name.first} ${user.name.last}">
+              <p>${user.name.first} ${user.name.last}</p>
+              <p>${user.email}</p>
+            </div>
+            <p>${user.location.city}, ${user.location.country}</p>
+          `;
+          testimonialsList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching customer testimonials:', error);
+      });
+  </script>
+
+  
   <section id="Contact Us">
     <!-- contact us -->
     <h2>Contact Us</h2>
