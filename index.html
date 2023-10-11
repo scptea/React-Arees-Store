@@ -167,12 +167,12 @@
   <script>
     // Fetch random user profiles from the Random User API
     const apiUrl = 'https://randomuser.me/api/?results=2';
-  
+
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         const testimonialsList = document.getElementById('testimonialsList');
-  
+
         // Iterate over the retrieved user profiles and create HTML elements for each testimonial
         data.results.forEach(user => {
           const listItem = document.createElement('li');
@@ -192,7 +192,7 @@
       });
   </script>
 
-  
+
   <section id="Contact Us">
     <!-- contact us -->
     <h2>Contact Us</h2>
@@ -213,6 +213,71 @@
       <p>&copy; 2023 Arees. All rights reserved.</p>
   </footer>
   </h5>
+
+  <!-- Screensaver container -->
+  <div id="screensaver-container"></div>
+
+  <!-- Include Three.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js"></script>
+
+  <script>
+    // Variables to track user activity
+    let isInactive = false;
+    let timeoutId;
+
+    // Function to show the screensaver
+    function showScreensaver() {
+      const screensaverContainer = document.getElementById('screensaver-container');
+      screensaverContainer.style.display = 'block';
+
+      // Initialize Three.js scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      screensaverContainer.appendChild(renderer.domElement);
+
+      // Example: Add a rotating cube
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial({ color: 0x8d6e63 });
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      camera.position.z = 5;
+
+      // Render loop
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+
+    // Function to reset the screensaver
+    function resetScreensaver() {
+      const screensaverContainer = document.getElementById('screensaver-container');
+      screensaverContainer.style.display = 'none';
+      clearTimeout(timeoutId);
+      startScreensaverTimer();
+    }
+
+    // Function to start the screensaver timer
+    function startScreensaverTimer() {
+      timeoutId = setTimeout(showScreensaver, 60000); // 1 minute
+    }
+
+    // Event listeners to detect user activity
+    document.addEventListener('mousemove', resetScreensaver);
+    document.addEventListener('keydown', resetScreensaver);
+    document.addEventListener('click', resetScreensaver);
+    document.addEventListener('scroll', resetScreensaver);
+
+    // Start the initial screensaver timer
+    startScreensaverTimer();
+  </script>
+
 </body>
 
 </html>
