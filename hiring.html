@@ -45,8 +45,91 @@
 
       <!-- Submit button -->
       <a href="confirmation.html" class="button">Submit</a>
+
+      <!-- Canvas container with border -->
+      <div id="canvasContainer">
+        <canvas id="signatureCanvas" width="300" height="150"></canvas>
+      </div><br><br>
+
+      <!-- Submit button with onclick event to capture signature -->
+      <button type="button" onclick="captureSignature()">Capture Signature</button>
     </form>
   </h4>
+
+  <script>
+    function captureSignature() {
+      // Get the canvas element
+      const canvas = document.getElementById('signatureCanvas');
+      const context = canvas.getContext('2d');
+
+      // Set the line properties for drawing the signature
+      context.lineWidth = 2;
+      context.strokeStyle = 'black';
+
+      // Variables to track the start and end points of the signature
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      // Event listeners for mouse/touch interactions
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+
+      canvas.addEventListener('touchstart', startDrawing);
+      canvas.addEventListener('touchmove', draw);
+      canvas.addEventListener('touchend', stopDrawing);
+
+      // Function to start drawing
+      function startDrawing(e) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+      }
+
+      // Function to draw the signature
+      function draw(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+
+        let currentX, currentY;
+        if (e.touches) {
+          // For touch events
+          currentX = e.touches[0].clientX - canvas.offsetLeft;
+          currentY = e.touches[0].clientY - canvas.offsetTop;
+        } else {
+          // For mouse events
+          currentX = e.offsetX;
+          currentY = e.offsetY;
+        }
+
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(currentX, currentY);
+        context.stroke();
+
+        [lastX, lastY] = [currentX, currentY];
+      }
+
+      // Function to stop drawing
+      function stopDrawing() {
+        isDrawing = false;
+      }
+
+      // Function to convert the signature to an image and append it to the form
+      function convertSignatureToImage() {
+        const signatureImage = document.createElement('input');
+        signatureImage.type = 'hidden';
+        signatureImage.name = 'signature';
+        signatureImage.value = canvas.toDataURL('image/png');
+        document.querySelector('form').appendChild(signatureImage);
+      }
+
+      // Call the function to convert the signature to an image
+      convertSignatureToImage();
+    }
+  </script>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2023 Arees. All rights reserved.</p>

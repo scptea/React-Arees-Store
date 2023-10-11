@@ -4,26 +4,36 @@
 a {
   color: rgba(235, 233, 229, 0.977)
 }
+
 p {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 10px;
   color: #666;
 }
-body{
+
+body {
   font-size: 15px;
   font-family: century;
   text-align: center;
 }
+
 ul {
   list-style-type: disc;
   margin-left: 20px;
   color: #333;
 }
+
 li {
   font-size: 16px;
   line-height: 1.5;
-  
+
+}
+
+#canvasContainer {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 5px;
 }
 
 /* Change all header cells of the table to uppercase */
@@ -339,6 +349,7 @@ input[name="message"] {
   font-size: 10px;
   opacity: 0.4;
 }
+
 .card {
   background-color: #f2f2f2;
   border: 1px solid #e0e0e0;
@@ -356,6 +367,7 @@ input[name="message"] {
 .card-date {
   margin-left: auto;
 }
+
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
