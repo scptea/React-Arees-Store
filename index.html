@@ -158,125 +158,141 @@
         </tr>
       </table>
     </h5>
-  </section>
-  <section id="CustomerTestimonials">
-    <h2>Customer Testimonials</h2>
-    <ul id="testimonialsList"></ul>
-  </section>
 
-  <script>
-    // Fetch random user profiles from the Random User API
-    const apiUrl = 'https://randomuser.me/api/?results=2';
-
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        const testimonialsList = document.getElementById('testimonialsList');
-
-        // Iterate over the retrieved user profiles and create HTML elements for each testimonial
-        data.results.forEach(user => {
-          const listItem = document.createElement('li');
-          listItem.innerHTML = `
-            <div>
-              <img src="${user.picture.medium}" alt="${user.name.first} ${user.name.last}">
-              <p>${user.name.first} ${user.name.last}</p>
-              <p>${user.email}</p>
-            </div>
-            <p>${user.location.city}, ${user.location.country}</p>
-          `;
-          testimonialsList.appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.log('Error fetching customer testimonials:', error);
-      });
-  </script>
+    <section id="Contact Us">
+      <!-- contact us -->
+      <h2>Contact Us</h2>
+      <h4 align="center">
+        <p>If you have any questions or inquiries, please feel free to contact us:</p>
+        <li>Email: <a href="mailto:info@areesstore.com" style="color: #333;">info@areesstore.com</a></li>
+        <li>Phone: <a href="tel:+966547278334" style="color: #333;">+966547278334</a></li>
+        <li>Address: 99b, Khobar, Saudi Arabia</li>
+        <a href="hiring.html" class="button">Apply to us as a live chat assistant now!</a>
+      </h4>
 
 
-  <section id="Contact Us">
-    <!-- contact us -->
-    <h2>Contact Us</h2>
-    <h4 align="center">
-      <p>If you have any questions or inquiries, please feel free to contact us:</p>
-      <li>Email: <a href="mailto:info@areesstore.com" style="color: #333;">info@areesstore.com</a></li>
-      <li>Phone: <a href="tel:+966547278334" style="color: #333;">+966547278334</a></li>
-      <li>Address: 99b, Khobar, Saudi Arabia</li>
-      <a href="hiring.html" class="button">Apply to us as a live chat assistant now!</a>
-    </h4>
+    </section>
 
+    <footer>
+      <h5>
+        <p>Contact us: info@areesstore.com | 966547278334</p>
+        <p>&copy; 2023 Arees. All rights reserved.</p>
+    </footer>
+    </h5>
 
-  </section>
+    <!-- Screensaver container -->
+    <div id="screensaver-container"></div>
 
-  <footer>
-    <h5>
-      <p>Contact us: info@areesstore.com | 966547278334</p>
-      <p>&copy; 2023 Arees. All rights reserved.</p>
-  </footer>
-  </h5>
+    <!-- Include Three.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js"></script>
 
-  <!-- Screensaver container -->
-  <div id="screensaver-container"></div>
+    <script>
+      // Variables to track user activity
+      let isInactive = false;
+      let timeoutId;
 
-  <!-- Include Three.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js"></script>
+      // Function to show the screensaver
+      function showScreensaver() {
+        const screensaverContainer = document.getElementById('screensaver-container');
+        screensaverContainer.style.display = 'block';
 
-  <script>
-    // Variables to track user activity
-    let isInactive = false;
-    let timeoutId;
+        // Initialize Three.js scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        screensaverContainer.appendChild(renderer.domElement);
 
-    // Function to show the screensaver
-    function showScreensaver() {
-      const screensaverContainer = document.getElementById('screensaver-container');
-      screensaverContainer.style.display = 'block';
+        // Example: Add a rotating cube
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x8d6e63 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-      // Initialize Three.js scene, camera, and renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      screensaverContainer.appendChild(renderer.domElement);
+        camera.position.z = 5;
 
-      // Example: Add a rotating cube
-      const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial({ color: 0x8d6e63 });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-
-      camera.position.z = 5;
-
-      // Render loop
-      function animate() {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
+        // Render loop
+        function animate() {
+          requestAnimationFrame(animate);
+          cube.rotation.x += 0.01;
+          cube.rotation.y += 0.01;
+          renderer.render(scene, camera);
+        }
+        animate();
       }
-      animate();
-    }
 
-    // Function to reset the screensaver
-    function resetScreensaver() {
-      const screensaverContainer = document.getElementById('screensaver-container');
-      screensaverContainer.style.display = 'none';
-      clearTimeout(timeoutId);
+      // Function to reset the screensaver
+      function resetScreensaver() {
+        const screensaverContainer = document.getElementById('screensaver-container');
+        screensaverContainer.style.display = 'none';
+        clearTimeout(timeoutId);
+        startScreensaverTimer();
+      }
+
+      // Function to start the screensaver timer
+      function startScreensaverTimer() {
+        timeoutId = setTimeout(showScreensaver, 60000); // 1 minute
+      }
+
+      // Event listeners to detect user activity
+      document.addEventListener('mousemove', resetScreensaver);
+      document.addEventListener('keydown', resetScreensaver);
+      document.addEventListener('click', resetScreensaver);
+      document.addEventListener('scroll', resetScreensaver);
+
+      // Start the initial screensaver timer
       startScreensaverTimer();
-    }
+    </script>
 
-    // Function to start the screensaver timer
-    function startScreensaverTimer() {
-      timeoutId = setTimeout(showScreensaver, 60000); // 1 minute
-    }
+    <script>
+      class Product {
+        constructor(name, price, description) {
+          this.name = name;
+          this.price = price;
+          this.description = description;
+        }
 
-    // Event listeners to detect user activity
-    document.addEventListener('mousemove', resetScreensaver);
-    document.addEventListener('keydown', resetScreensaver);
-    document.addEventListener('click', resetScreensaver);
-    document.addEventListener('scroll', resetScreensaver);
+        // Getter methods
+        getName() {
+          return this.name;
+        }
 
-    // Start the initial screensaver timer
-    startScreensaverTimer();
-  </script>
+        getPrice() {
+          return this.price;
+        }
+
+        getDescription() {
+          return this.description;
+        }
+
+        // Setter methods
+        setName(name) {
+          this.name = name;
+        }
+
+        setPrice(price) {
+          this.price = price;
+        }
+
+        setDescription(description) {
+          this.description = description;
+        }
+      }
+
+      // Creating product objects
+      const product1 = new Product("Multi use Coffee Machine", 99.99, "A high-quality coffee machine for home use.");
+      const product2 = new Product("Espresso Maker", 149.99, "An espresso maker that delivers rich and flavorful espresso shots.");
+      const product3 = new Product("Coffee Grinder", 49.99, "A grinder that ensures freshly ground beans for the perfect cup of coffee.");
+
+      // Modifying the objects
+      product1.setPrice(249.99); // Modifying the price of product1
+      product3.setDescription("A durable coffee grinder that provides consistent grind sizes.");
+
+      // Accessing object properties
+      console.log(product1.getName()); // Output: "Coffee Machine"
+      console.log(product2.getPrice()); // Output: 149.99
+      console.log(product3.getDescription()); // Output: "A durable coffee grinder that provides consistent grind sizes."
+    </script>
 
 </body>
 
