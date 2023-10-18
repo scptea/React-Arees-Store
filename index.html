@@ -245,9 +245,8 @@
     </script>
 
     <script>
-
-      // Define the Product class using an IIFE (Immediately Invoked Function Expression)
-      const Product = (() => {
+      // Define the Product class using function expressions and nested functions
+      const createProductClass = (() => {
         // Constructor function
         const Product = function (name, price, description) {
           this.name = name;
@@ -255,7 +254,7 @@
           this.description = description;
         };
 
-        // Define getter and setter methods using regular function expressions
+        // Define getter and setter methods as nested functions
         Product.prototype.getName = function () {
           return this.name;
         };
@@ -283,10 +282,10 @@
         return Product;
       })();
 
-      // Create product objects
-      const product1 = new Product("Multi Use Coffee Machine", 99.99, "A high-quality coffee machine for home use.");
-      const product2 = new Product("Espresso Maker", 149.99, "An espresso maker that delivers rich and flavorful espresso shots.");
-      const product3 = new Product("Coffee Grinder", 49.99, "A grinder that ensures freshly ground beans for the perfect cup of coffee.");
+      // Create product objects using the nested Product class
+      const product1 = new createProductClass("Multi Use Coffee Machine", 99.99, "A high-quality coffee machine for home use.");
+      const product2 = new createProductClass("Espresso Maker", 149.99, "An espresso maker that delivers rich and flavorful espresso shots.");
+      const product3 = new createProductClass("Coffee Grinder", 49.99, "A grinder that ensures freshly ground beans for the perfect cup of coffee.");
 
       // Modify objects
       product1.setPrice(249.99);
