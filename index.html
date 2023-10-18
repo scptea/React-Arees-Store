@@ -245,55 +245,58 @@
     </script>
 
     <script>
-      class Product {
-        constructor(name, price, description) {
+
+      // Define the Product class using an IIFE (Immediately Invoked Function Expression)
+      const Product = (() => {
+        // Constructor function
+        const Product = function (name, price, description) {
           this.name = name;
           this.price = price;
           this.description = description;
-        }
+        };
 
-        // Getter methods
-        getName() {
+        // Define getter and setter methods using regular function expressions
+        Product.prototype.getName = function () {
           return this.name;
-        }
+        };
 
-        getPrice() {
+        Product.prototype.getPrice = function () {
           return this.price;
-        }
+        };
 
-        getDescription() {
+        Product.prototype.getDescription = function () {
           return this.description;
-        }
+        };
 
-        // Setter methods
-        setName(name) {
+        Product.prototype.setName = function (name) {
           this.name = name;
-        }
+        };
 
-        setPrice(price) {
+        Product.prototype.setPrice = function (price) {
           this.price = price;
-        }
+        };
 
-        setDescription(description) {
+        Product.prototype.setDescription = function (description) {
           this.description = description;
-        }
-      }
+        };
 
-      // Creating product objects
-      const product1 = new Product("Multi use Coffee Machine", 99.99, "A high-quality coffee machine for home use.");
+        return Product;
+      })();
+
+      // Create product objects
+      const product1 = new Product("Multi Use Coffee Machine", 99.99, "A high-quality coffee machine for home use.");
       const product2 = new Product("Espresso Maker", 149.99, "An espresso maker that delivers rich and flavorful espresso shots.");
       const product3 = new Product("Coffee Grinder", 49.99, "A grinder that ensures freshly ground beans for the perfect cup of coffee.");
 
-      // Modifying the objects
-      product1.setPrice(249.99); // Modifying the price of product1
-      product3.setDescription("A durable coffee grinder that provides consistent grind sizes.");
+      // Modify objects
+      product1.setPrice(249.99);
+      product3.setDescription("A durable coffee grinder that provides consistent grind sizes and variety.");
 
-      // Accessing object properties
-      console.log(product1.getName()); // Output: "Coffee Machine"
-      console.log(product2.getPrice()); // Output: 149.99
-      console.log(product3.getDescription()); // Output: "A durable coffee grinder that provides consistent grind sizes."
+      // Access object properties
+      console.log(product1.getName()); // Multi Use Coffee Machine
+      console.log(product1.getPrice()); // 249.99
+      console.log(product3.getDescription()); // A durable coffee grinder that provides consistent grind sizes and variety.
     </script>
-
 </body>
 
 </html>
