@@ -57,6 +57,7 @@
     <h2>Coffee Machine Details</h2>
     <h5>
       <table align="center" id="coffeeTable" class="fancy-border">
+
         <tr>
           <th>Brewing Method</th>
           <th>Equipment Needed</th>
@@ -64,7 +65,7 @@
           <th>Flavor Profile</th>
         </tr>
       </table>
-      <tr>
+    </h5>
   </section>
   <script>
     // Data for the coffee machine details
@@ -98,17 +99,28 @@
     // Get the table element
     const coffeeTable = document.getElementById('coffeeTable');
 
-    // Loop through the coffeeData list and create table rows dynamically
-    coffeeData.forEach(coffee => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${coffee.brewingMethod}</td>
-        <td>${coffee.equipmentNeeded}</td>
-        <td>${coffee.brewingTime}</td>
-        <td>${coffee.flavorProfile}</td>
-      `;
-      coffeeTable.appendChild(row);
+    // Refactor using map to create table rows
+    const coffeeRows = coffeeData.map(coffee => {
+      return `
+    <tr>
+      <td>${coffee.brewingMethod}</td>
+      <td>${coffee.equipmentNeeded}</td>
+      <td>${coffee.brewingTime}</td>
+      <td>${coffee.flavorProfile}</td>
+    </tr>
+  `;
     });
+
+    // Use reduce to join the rows and set innerHTML
+    coffeeTable.innerHTML = `
+  <tr>
+    <th>Brewing Method</th>
+    <th>Equipment Needed</th>
+    <th>Brewing Time</th>
+    <th>Flavor Profile</th>
+  </tr>
+  ${coffeeRows.reduce((acc, row) => acc + row, '')}
+`;
   </script>
 
   </h5>
@@ -127,37 +139,47 @@
     <!-- Features and Benefits -->
     <h2>Features and Benefits</h2>
     <h5>
-      <table align="center" class="fancy-border">
+      <table align="center" id="featuresAndBenefitsTable" class="fancy-border">
         <tr>
           <th>Features</th>
           <th>Benefits</th>
         </tr>
-        <tr>
-          <td>Wide Selection</td>
-          <td>Choose from a variety of coffee machines and accessories.</td>
-        </tr>
-        <tr>
-          <td>Quality Products</td>
-          <td>Get coffee equipment known for its durability and performance.</td>
-        </tr>
-        <tr>
-          <td>Competitive Prices</td>
-          <td>Enjoy affordable rates without compromising on quality.</td>
-        </tr>
-        <tr>
-          <td>Expert Advice</td>
-          <td>Receive guidance from coffee experts for the perfect brewing experience.</td>
-        </tr>
-        <tr>
-          <td>Easy Ordering</td>
-          <td>Conveniently place your order online with just a few clicks.</td>
-        </tr>
-        <tr>
-          <td>Secure Payment</td>
-          <td>Ensure the safety of your transactions with our secure payment system.</td>
-        </tr>
       </table>
     </h5>
+    <script>
+      // Data for Features and Benefits
+      const featuresAndBenefitsData = [
+        { feature: 'Wide Selection', benefit: 'Choose from a variety of coffee machines and accessories.' },
+        { feature: 'Quality Products', benefit: 'Get coffee equipment known for its durability and performance.' },
+        { feature: 'Competitive Prices', benefit: 'Enjoy affordable rates without compromising on quality.' },
+        { feature: 'Expert Advice', benefit: 'Receive guidance from coffee experts for the perfect brewing experience.' },
+        { feature: 'Easy Ordering', benefit: 'Conveniently place your order online with just a few clicks.' },
+        { feature: 'Secure Payment', benefit: 'Ensure the safety of your transactions with our secure payment system.' },
+      ];
+
+      // Get the table element
+      const featuresAndBenefitsTable = document.getElementById('featuresAndBenefitsTable');
+
+      // Refactor using map to create table rows
+      const featuresAndBenefitsRows = featuresAndBenefitsData.map(item => {
+        return `
+    <tr>
+      <td>${item.feature}</td>
+      <td>${item.benefit}</td>
+    </tr>
+  `;
+      });
+
+      // Use reduce to join the rows and set innerHTML
+      featuresAndBenefitsTable.innerHTML = `
+  <tr>
+    <th>Features</th>
+    <th>Benefits</th>
+  </tr>
+  ${featuresAndBenefitsRows.reduce((acc, row) => acc + row, '')}
+`;
+
+    </script>
 
     <section id="Contact Us">
       <!-- contact us -->
