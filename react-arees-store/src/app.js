@@ -1,25 +1,18 @@
-
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3000;
 
-//  routes
-app.get('/', (req, res) => {
-    res.send('Welcome to the Arees Store!');
-});
+// Serve static files from the "public" directory (if you have static files)
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/menu', (req, res) => {
-    res.send('View our coffee machines items.');
-});
-
-app.get('/about', (req, res) => {
-    res.send('Learn more about our coffee store.');
-});
-
-app.get('/order', (req, res) => {
-    res.send('Your coffee machine order has been placed!');
-});
-
+// Import and use routers
+const mainRouter = require('./routes/main');
+const menuRouter = require('./routes/menu');
+const aboutRouter = require('./routes/about');
+app.use('/', mainRouter);
+app.use('/menu', menuRouter);
+app.use('/about', aboutRouter);
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
