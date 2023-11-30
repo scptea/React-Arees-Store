@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Live Chat Assistant</title>
+  <meta name="description" content="Live chat assistant form">
+  <meta name="author" content="faisal alassaf">
+  <link rel="stylesheet" href="styles.css"> <!--style-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body align="center">
+  <!-- Heading -->
+  <h2>Live chat assistant form</h2>
+  <h4>
+    <!-- Form -->
+    <form action="/form" method="post">
+      <!-- Name input field -->
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="name" required autocomplete="off"><br><br>
+
+      <!-- Email input field -->
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required autocomplete="email"><br><br>
+
+      <!-- Experience input field -->
+      <label for="experience">Years of Experience:</label><br>
+      <input type="number" id="experience" name="experience" required><br><br>
+
+      <!-- Availability input field -->
+      <label for="availability">Availability:</label><br>
+      <input type="text" id="availability" name="availability" placeholder="e.g., 20 hours per week" required><br><br>
+
+      <!-- Skills textarea -->
+      <label for="skills">Skills:</label><br>
+      <textarea id="skills" name="skills" rows="5" required></textarea><br><br>
+
+      <!-- Resume/CV file upload -->
+      <label for="resume">Resume/CV:</label><br>
+      <input type="file" id="resume" name="resume" required><br><br>
+
+      <!-- Terms and conditions checkbox -->
+      <input type="checkbox" id="terms" name="terms" required>
+      <label for="terms">I agree to the terms and conditions</label><br><br>
+
+      <!-- Submit button -->
+      <a href="/confirmation" class="button">Submit</a>
+
+      <!-- Canvas container with border -->
+      <div id="canvasContainer">
+        <canvas id="signatureCanvas" width="300" height="150"></canvas>
+      </div><br><br>
+
+      <!-- Submit button with onclick event to capture signature -->
+      <button type="button" onclick="captureSignature()">Capture Signature</button>
+    </form>
+  </h4>
+
+  <script>
+    function captureSignature() {
+      // Get the canvas element
+      const canvas = document.getElementById('signatureCanvas');
+      const context = canvas.getContext('2d');
+
+      // Set the line properties for drawing the signature
+      context.lineWidth = 2;
+      context.strokeStyle = 'black';
+
+      // Variables to track the start and end points of the signature
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      // Event listeners for mouse/touch interactions
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+
+      canvas.addEventListener('touchstart', startDrawing);
+      canvas.addEventListener('touchmove', draw);
+      canvas.addEventListener('touchend', stopDrawing);
+
+      // Function to start drawing
+      function startDrawing(e) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+      }
+
+      // Function to draw the signature
+      function draw(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+
+        let currentX, currentY;
+        if (e.touches) {
+          // For touch events
+          currentX = e.touches[0].clientX - canvas.offsetLeft;
+          currentY = e.touches[0].clientY - canvas.offsetTop;
+        } else {
+          // For mouse events
+          currentX = e.offsetX;
+          currentY = e.offsetY;
+        }
+
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(currentX, currentY);
+        context.stroke();
+
+        [lastX, lastY] = [currentX, currentY];
+      }
+
+      // Function to stop drawing
+      function stopDrawing() {
+        isDrawing = false;
+      }
+
+      // Function to convert the signature to an image and append it to the form
+      function convertSignatureToImage() {
+        const signatureImage = document.createElement('input');
+        signatureImage.type = 'hidden';
+        signatureImage.name = 'signature';
+        signatureImage.value = canvas.toDataURL('image/png');
+        document.querySelector('form').appendChild(signatureImage);
+      }
+
+      // Call the function to convert the signature to an image
+      convertSignatureToImage();
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Arees. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
