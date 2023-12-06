@@ -21,6 +21,9 @@ const aboutRouter = require('./routes/about');
 const hiringRouter = require('./routes/hiring'); 
 const formRouter = require('./routes/form'); 
 const confirmRouter = require('./routes/confirm'); 
+const arRouter = require('./routes/ar'); 
+
+app.use('/index-ar.html', arRouter);
 app.use('/', mainRouter);
 app.use('/menu', menuRouter);
 app.use('/about', aboutRouter);
