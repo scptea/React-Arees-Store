@@ -8,13 +8,14 @@ const port = 3000;
 // Use path.resolve to get an absolute path to the "public" directory
 const publicPath = path.resolve(__dirname, 'public');
 
-// Serve static files from the "public" directory (if you have static files)
-app.use(express.static(publicPath));
+// Serve static files from the "public" directory
+app.use(express.static('../public'));
 
 // Use middleware to parse application/x-www-form-urlencoded data
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Import and use routers
+/*
 const mainRouter = require('./routes/main');
 const menuRouter = require('./routes/menu');
 const aboutRouter = require('./routes/about');
@@ -30,7 +31,7 @@ app.use('/about', aboutRouter);
 app.use('/form', formRouter);
 app.use('/hiring', hiringRouter);
 app.use('/confirmation', confirmRouter);
-
+*/
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
