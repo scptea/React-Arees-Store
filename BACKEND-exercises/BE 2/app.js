@@ -19,7 +19,7 @@ fs.readdir(sourceDirectory, (err, files) => {
 
     // Filter for specific file extension (e.g., .pdf)
     const fileExtensionToCount = '.pdf';
-    const matchingFiles = files.filter((file) => file.endsWith(fileExtensionToCount);
+    const matchingFiles = files.filter((file) => file.endsWith(fileExtensionToCount))
 
     matchingFiles.forEach((file) => {
         const sourceFilePath = path.join(sourceDirectory, file);
